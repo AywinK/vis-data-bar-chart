@@ -22,7 +22,7 @@ function renderChart() {
 
     // declare x scale
     const xScale = d3.scaleTime()
-        .domain([(new Date(data?.at(0)[0])).getFullYear() + ((new Date(data.at(0)[0]).getMonth() + 1) / 12), (new Date(data?.at(-1)[0])).getFullYear() + ((new Date(data.at(-1)[0]).getMonth() + 1) / 12)])
+        .domain([new Date(data.at(0)[0]), new Date(data.at(-1)[0])])
         .range([margin, width - margin]);
 
     // declare y scale
@@ -54,10 +54,10 @@ function renderChart() {
         .data(data)
         .join("rect")
         .attr("class", "bar")
-        .attr("x", d => xScale((new Date(d[0]).getFullYear()) + ((new Date(d[0])).getMonth() + 1) / 12))
+        .attr("x", d => xScale(new Date(d[0])))
         .attr("y", d => yScale(d[1]))
         .attr("height", d => yScale(0) - yScale(d[1]))
-        .attr("width", 1)
+        .attr("width", ((width - 2 * margin) / data.length) * 0.75)
         .attr("data-date", d => d[0])
         .attr("data-gdp", d => d[1])
 
