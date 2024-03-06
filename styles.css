@@ -22,9 +22,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    > * {
+
+    >* {
         margin: 10px auto;
-        border: 0.1rem solid red;
+        /* border: 0.1rem solid red; */
     }
+}
+
+#tooltip {
+    position: absolute;
+    background-color: black;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 10px;
 }
